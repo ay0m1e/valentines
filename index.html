@@ -47,6 +47,18 @@
       text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
       margin-top: 30px;
     }
+    #hearts {
+      display: none;
+      font-size: 3rem;
+      animation: float 2s infinite;
+      color: #ff69b4;
+      position: absolute;
+    }
+    @keyframes float {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+      100% { transform: translateY(0); }
+    }
     footer {
       position: fixed;
       bottom: 10px;
@@ -61,7 +73,13 @@
   <h1>Will you be my Valentine? 💖</h1>
   <button id="yes">Yes 😍</button>
   <button id="no">No 😅</button>
-  <p id="message">🎉 Yay! You’ve made my day! 💞</p>
+
+  <div id="message">
+    🎉 Yay! You’ve made my heart so happy! 💞 <br>
+    <p>I can't wait to spend Valentine's Day with you. You're the best thing that's ever happened to me. ❤️</p>
+  </div>
+
+  <div id="hearts">💖💖💖</div>
 
   <footer>Made with ❤️ just for you</footer>
 
@@ -69,6 +87,7 @@
     const noButton = document.getElementById('no');
     const yesButton = document.getElementById('yes');
     const message = document.getElementById('message');
+    const hearts = document.getElementById('hearts');
 
     // Move the "No" button to a random position
     noButton.addEventListener('mouseover', () => {
@@ -79,11 +98,26 @@
       noButton.style.top = `${randomY}px`;
     });
 
-    // Show the message when "Yes" is clicked
+    // Show the message and floating hearts when "Yes" is clicked
     yesButton.addEventListener('click', () => {
       message.style.display = 'block';
       yesButton.style.display = 'none';
       noButton.style.display = 'none';
+      hearts.style.display = 'block';
+
+      // Add floating hearts effect
+      setInterval(() => {
+        const heart = document.createElement('div');
+        heart.textContent = '💖';
+        heart.style.position = 'absolute';
+        heart.style.left = `${Math.random() * 100}vw`;
+        heart.style.animation = 'float 2s infinite';
+        heart.style.fontSize = '2rem';
+        heart.style.top = '100vh';
+        document.body.appendChild(heart);
+
+        setTimeout(() => heart.remove(), 3000);
+      }, 500);
     });
   </script>
 </body>
