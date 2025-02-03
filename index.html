@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Be My Valentine?</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to bottom, #ff9a9e, #fecfef);
+      color: #fff;
+    }
+    h1 {
+      font-size: 3rem;
+      margin-top: 10%;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    }
+    button {
+      font-size: 1.5rem;
+      padding: 15px 30px;
+      margin: 20px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    button:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);
+    }
+    #yes {
+      background-color: #ff6f61;
+      color: white;
+    }
+    #no {
+      background-color: #6fc3df;
+      color: white;
+    }
+    #message {
+      display: none;
+      font-size: 2rem;
+      font-weight: bold;
+      text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
+      margin-top: 30px;
+    }
+    footer {
+      position: fixed;
+      bottom: 10px;
+      width: 100%;
+      text-align: center;
+      font-size: 0.9rem;
+      color: rgba(255, 255, 255, 0.8);
+    }
+  </style>
+</head>
+<body>
+  <h1>Will you be my Valentine? 💖</h1>
+  <button id="yes">Yes 😍</button>
+  <button id="no">No 😅</button>
+  <p id="message">🎉 Yay! You’ve made my day! 💞</p>
+
+  <footer>Made with ❤️ just for you</footer>
+
+  <script>
+    const noButton = document.getElementById('no');
+    const yesButton = document.getElementById('yes');
+    const message = document.getElementById('message');
+
+    // Move the "No" button to a random position
+    noButton.addEventListener('mouseover', () => {
+      const randomX = Math.random() * (window.innerWidth - noButton.offsetWidth);
+      const randomY = Math.random() * (window.innerHeight - noButton.offsetHeight);
+      noButton.style.position = 'absolute';
+      noButton.style.left = `${randomX}px`;
+      noButton.style.top = `${randomY}px`;
+    });
+
+    // Show the message when "Yes" is clicked
+    yesButton.addEventListener('click', () => {
+      message.style.display = 'block';
+      yesButton.style.display = 'none';
+      noButton.style.display = 'none';
+    });
+  </script>
+</body>
+</html>
+
